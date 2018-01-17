@@ -9,12 +9,14 @@ var Stack = function() {
   someInstance.push = function(value) {
     storage[count] = value;
     count++;
-    debugger
-    return storage[count];
   };
 
   someInstance.pop = function() {
+    var popedVal = storage[count - 1];
+    //debugger
+    delete storage[count - 1];
     count--;
+    return popedVal;
   };
 
   someInstance.size = function() {
