@@ -12,10 +12,9 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    var popedVal = storage[count - 1];
-    //debugger
-    delete storage[count - 1];
     count--;
+    var popedVal = storage[count];
+    delete storage[count];
     return popedVal;
   };
 
