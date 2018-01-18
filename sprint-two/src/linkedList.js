@@ -8,14 +8,22 @@ var LinkedList = function() {
   
   list.addToTail = function(value) {
     if (list.tail) {
-      list.tail.next = value;  
-      list[list.count] = list.tail;
-      list.count++;
+      list.tail.next = value; 
+      if (!list.head.next) {
+        list.head.next = value;
+        list.count++;
+      } else {
+        list[list.count] = list.tail;
+        list.count++;
+      }
+    } else {
+      list.head = Node(value);
     }
     list.tail = Node(value);
   };
 
   list.removeHead = function() {
+
     var newHead = list.head.next;
     delete list.head;
     list.head = _.find(list, function(element) {
