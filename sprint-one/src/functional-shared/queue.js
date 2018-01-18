@@ -13,10 +13,15 @@ var queueMethods = {};
 
 queueMethods.enqueue = function(value) {
   this.count++;
+  this.store[this.countInstance] = value;
+  this.countInstance++;
 };
 
 queueMethods.dequeue = function() {
+  var dequeueValue = this.store[Object.keys(this.store)[0]];
+  delete this.store[Object.keys(this.store)[0]];
   this.count--;
+  return dequeueValue;
 };
 
 queueMethods.size = function() {
