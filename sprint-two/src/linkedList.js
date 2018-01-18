@@ -23,15 +23,19 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-
+    var oldHeadValue = list.head.value;
     var newHead = list.head.next;
     delete list.head;
     list.head = _.find(list, function(element) {
       return element.value === newHead;
     });
+    return oldHeadValue;
   };
 
   list.contains = function(target) {
+    return undefined !== _.find(list, function(element) {
+      return element.value === target;
+    });
   };
 
   return list;
