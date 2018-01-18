@@ -17,10 +17,13 @@ var stackMethods = {};
 
 stackMethods.pop = function() {
   this.count--;
-  
+  var popValue = this.storage[this.count];
+  delete this.storage[this.count];
+  return popValue;
 };
 
 stackMethods.push = function(value) {
+  this.storage[this.count] = value;
   this.count ++;
 };
 
