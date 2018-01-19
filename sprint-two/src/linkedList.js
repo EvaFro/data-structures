@@ -3,39 +3,37 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  list.count = 0;
+
   
   
   list.addToTail = function(value) {
-    if (list.tail) {
-      list.tail.next = value; 
-      if (!list.head.next) {
-        list.head.next = value;
-        list.count++;
-      } else {
-        list[list.count] = list.tail;
-        list.count++;
-      }
+    var node = Node(value);
+    if (list.head === null) {
+      list.head = node;
+    } else if (list.head.next === null) {
+      list.head.next = node;
     } else {
-      list.head = Node(value);
+      list.tail.next = node;
     }
-    list.tail = Node(value);
+    
+    list.tail = node;
   };
 
   list.removeHead = function() {
     var oldHeadValue = list.head.value;
-    var newHead = list.head.next;
-    delete list.head;
-    list.head = _.find(list, function(element) {
-      return element.value === newHead;
-    });
+    list.head = list.head.next;
     return oldHeadValue;
   };
 
   list.contains = function(target) {
-    return undefined !== _.find(list, function(element) {
-      return element.value === target;
-    });
+    var currentNode = list.head;
+    while (currentNode !== null) {
+      if (currentNode.value === target) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
   };
 
   return list;
