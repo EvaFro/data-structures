@@ -44,6 +44,9 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  instert: Number of elments in buket is small so essentually an O(1);
+  retrieve: Number of elments in buket is small so essentually an O(1);
+  remove: Number of elments in buket is small so essentually an O(1);
  */
 
 
