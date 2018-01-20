@@ -41,15 +41,18 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   
-  var index = _.reduce(this.edges, function(edge, i) {
+  var index = _.reduce(this.edges, function(indexEdge, edge, i) {
     if (toNode === undefined && (edge[0] === fromNode || edge[1] === fromNode)) {
       return i;
     } else if ((edge[0] === fromNode || edge[0] === toNode) && 
       (edge[1] === fromNode || edge[1] === toNode)) {
       return i;
     }
+    return indexEdge;
   }, -1);
-  this.edges.splice(index, 1);
+  if (index !== -1) {
+    this.edges.splice(index, 1);
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.
