@@ -41,4 +41,12 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should be that every child is a tree', function() {
+    tree.addChild(5);
+    expect(tree.children[0].addChild).to.be.a('function');
+    expect(tree.children[0].children).to.be.a('array');
+    expect(tree.children[0].contains).to.be.a('function');
+    expect(tree.children[0].hasOwnProperty('value')).to.equal(true);
+  });
+
 });
