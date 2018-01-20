@@ -73,4 +73,10 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  it('should use a limited array', function() {
+    expect(hashTable._storage.get).to.be.a('function');
+    expect(hashTable._storage.set).to.be.a('function');
+    expect(hashTable._storage.each).to.be.a('function');
+  });
 });
