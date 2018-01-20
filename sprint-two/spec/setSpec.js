@@ -24,4 +24,8 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not be an array', function() {
+    expect(set._storage).to.be.a('object');
+  });
+
 });
