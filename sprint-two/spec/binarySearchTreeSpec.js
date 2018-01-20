@@ -37,4 +37,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should that every element is a binary search tree', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.left.insert).to.be.a('function');
+    expect(binarySearchTree.left.contains).to.be.a('function');
+    expect(binarySearchTree.left.depthFirstLog).to.be.a('function');
+    expect(binarySearchTree.right.insert).to.be.a('function');
+    expect(binarySearchTree.right.contains).to.be.a('function');
+    expect(binarySearchTree.right.depthFirstLog).to.be.a('function');
+  });
 });
