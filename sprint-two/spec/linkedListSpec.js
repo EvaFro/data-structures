@@ -50,6 +50,11 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+  
+  it('when only 1 element in the list head should equal tail', function() {
+    linkedList.addToTail(4);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.tail.value).to.equal(4);
+  });
 
-  // add more tests here to test the functionality of linkedList
 });
