@@ -29,15 +29,13 @@ binarySearchTreeMethods.contains = function contains(value) {
     return true;
   } else {
     if (this.value > value) {
-      if (this.left === null) {
-        return false;
-      }
-      return this.left.contains(value);
+      if (this.left !== null) {
+        return this.left.contains(value);
+      } 
     } else {
-      if (this.right === null) {
-        return false;
-      }
-      return this.right.contains(value);
+      if (this.right !== null) {
+        return this.right.contains(value);
+      } 
     }
   }
 
