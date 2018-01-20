@@ -4,6 +4,7 @@ var Tree = function(value) {
   
   // your code here
   newTree.children = [];
+  newTree.parent = null;
   _.extend(newTree, treeMethods);
 
   return newTree;
@@ -13,6 +14,7 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   var child = Tree(value);
+  child.parent = this;
   this.children.push(child);
 };
 
@@ -31,6 +33,21 @@ treeMethods.contains = function(target) {
     }
   }
   return false;
+};
+
+treeMethods.removeFromParent = function() {
+debugger
+  var parent = this.parent;
+  var index = -1;
+  for (var i = 0; i < parent.children.length; i++) {
+    if (parent.children[i].value === this.value) {
+      index = i;
+      break;
+    }
+  }
+  parent.children.splice(index, 1);
+
+  this.parent = null;
 };
 
 
