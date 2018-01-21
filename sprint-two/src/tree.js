@@ -36,7 +36,6 @@ treeMethods.contains = function(target) {
 };
 
 treeMethods.removeFromParent = function() {
-debugger
   var parent = this.parent;
   var index = -1;
   for (var i = 0; i < parent.children.length; i++) {
@@ -48,6 +47,14 @@ debugger
   parent.children.splice(index, 1);
 
   this.parent = null;
+};
+
+treeMethods.traverse = function(cb) {
+  cb(this.value);
+
+  for (var i = 0; i < this.children.length; i++) {
+    this.children[i].traverse(cb);
+  }
 };
 
 
